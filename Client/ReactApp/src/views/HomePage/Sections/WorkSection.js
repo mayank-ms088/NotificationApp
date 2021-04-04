@@ -16,6 +16,12 @@ const useStyles = makeStyles(styles);
 
 export default function WorkSection() {
   const classes = useStyles();
+  let state={
+    mobile:''
+  }
+  const getValue = (event)=>{
+    console.log(event.target.value);
+  }
   return (
     <div className={classes.section}>
       <GridContainer justify="center">
@@ -34,6 +40,9 @@ export default function WorkSection() {
                   id="Number"
                   formControlProps={{
                     fullWidth: true
+                  }}
+                  inputProps={{
+                    onChange: getValue,
                   }}
                 />
               </GridItem>
