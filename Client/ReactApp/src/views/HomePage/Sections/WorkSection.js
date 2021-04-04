@@ -17,11 +17,38 @@ const useStyles = makeStyles(styles);
 export default function WorkSection() {
   const classes = useStyles();
   let state={
-    mobile:''
+    mobile:"",
+    smsBody: "",
+    topic:"",
+    token:"",
+    title:"",
+    msgBody:""
   }
-  const getValue = (event)=>{
-    console.log(event.target.value);
+  const getMobileNumber=(event)=>{
+    state.mobile = event.target.value;
+    console.log(state);
   }
+  const getSmsBody=(event)=>{
+    state.smsBody = event.target.value;
+    console.log(state);
+  }
+  const getTopic=(event)=>{
+    state.topic = event.target.value;
+    console.log(state);
+  }
+  const getTitle=(event)=>{
+    state.title = event.target.value;
+    console.log(state);
+  }
+  const getToken=(event)=>{
+    state.token = event.target.value;
+    console.log(state);
+  }
+  const getmsgBody=(event)=>{
+    state.msgBody = event.target.value;
+    console.log(state);
+  }
+  
   return (
     <div className={classes.section}>
       <GridContainer justify="center">
@@ -42,7 +69,9 @@ export default function WorkSection() {
                     fullWidth: true
                   }}
                   inputProps={{
-                    onChange: getValue,
+                    type: "mobile",
+                    onChange: getMobileNumber
+                    
                   }}
                 />
               </GridItem>
@@ -55,7 +84,9 @@ export default function WorkSection() {
                 }}
                 inputProps={{
                   multiline: true,
-                  rows: 5
+                  rows: 5,
+                  type: "msg",
+                  onChange: getSmsBody
                 }}
               />
               <GridItem xs={12} sm={12} md={4}>
@@ -78,6 +109,9 @@ export default function WorkSection() {
                   formControlProps={{
                     fullWidth: true
                   }}
+                  inputProps={{
+                    onChange: getTitle
+                  }}
                 />
               </GridItem>
               <GridItem xs={12} sm={12} md={6}>
@@ -86,6 +120,9 @@ export default function WorkSection() {
                   id="topic"
                   formControlProps={{
                     fullWidth: true
+                  }}
+                  inputProps={{
+                    onChange: getTopic
                   }}
                 />
               </GridItem>
@@ -98,7 +135,8 @@ export default function WorkSection() {
                 }}
                 inputProps={{
                   multiline: true,
-                  rows: 1
+                  rows: 1,
+                  onChange: getToken
                 }}
               />
               <CustomInput
@@ -110,7 +148,8 @@ export default function WorkSection() {
                 }}
                 inputProps={{
                   multiline: true,
-                  rows: 5
+                  rows: 5,
+                  onChange: getmsgBody
                 }}
               />
               <GridItem xs={12} sm={12} md={4}>
