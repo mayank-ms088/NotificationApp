@@ -7,9 +7,9 @@ import "assets/scss/material-kit-react.scss?v=1.9.0";
 
 // pages for this product
 import home from "views/HomePage/home.js";
-import events from "views/Events/event.js";
+import {initFirebase} from "utils/initializeFirebaseApp.js";
 var hist = createBrowserHistory();
-
+initFirebase();
 ReactDOM.render(
   <Router history={hist}>
     <Switch>

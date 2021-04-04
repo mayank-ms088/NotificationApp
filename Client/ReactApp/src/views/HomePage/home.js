@@ -2,7 +2,7 @@ import React from "react";
 // nodejs library that concatenates classes
 import classNames from "classnames";
 // react components for routing our app without refresh
-import { Link } from "react-router-dom";
+
 // @material-ui/core components
 import { makeStyles } from "@material-ui/core/styles";
 // @material-ui/icons
@@ -11,10 +11,10 @@ import Header from "components/Header/Header.js";
 import Footer from "components/Footer/Footer.js";
 import GridContainer from "components/Grid/GridContainer.js";
 import GridItem from "components/Grid/GridItem.js";
-import Button from "components/CustomButtons/Button.js";
+
 import Parallax from "components/Parallax/Parallax.js";
 // sections for this page
-import HeaderLinks from "components/Header/HeaderLinks.js";
+
 import WorkSection from "./Sections/WorkSection.js";
 
 import styles from "assets/jss/material-kit-react/views/components.js";
@@ -27,7 +27,7 @@ export default function Components(props) {
   return (
     <div>
       <Header
-        brand="Notifications Application"
+        brand="Notification Application"
         fixed
         color="transparent"
         changeColorOnScroll={{
@@ -43,7 +43,7 @@ export default function Components(props) {
               <div className={classes.brand}>
                 <h1 className={classes.title}>Notification Application</h1>
                 <h3 className={classes.subtitle}>
-                  A Web App to send the Push Notifications and SMS
+                  A Simple Web App to send Push Notifications and SMS.
                 </h3>
               </div>
             </GridItem>
