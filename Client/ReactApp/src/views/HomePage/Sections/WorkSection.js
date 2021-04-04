@@ -22,8 +22,8 @@ export default function WorkSection() {
     sms: { 
       mobile:"",
       smsBody: ""
-    }:
-    pushNotification{ 
+    },
+    pushNotification: { 
       topic:"",
       token:"",
       title:"",
@@ -32,27 +32,27 @@ export default function WorkSection() {
   }
   const getMobileNumber=(event)=>{
     state.sms.mobile = event.target.value;
-    console.log(state.sms);
+    //console.log(state.sms);
   }
   const getSmsBody=(event)=>{
     state.sms.smsBody = event.target.value;
-    console.log(state.sms);
+    //console.log(state.sms);
   }
   const getTopic=(event)=>{
     state.pushNotification.topic = event.target.value;
-    console.log(state.pushNotification);
+    //console.log(state.pushNotification);
   }
   const getTitle=(event)=>{
     state.pushNotification.title = event.target.value;
-    console.log(state.pushNotification);
+    //console.log(state.pushNotification);
   }
   const getToken=(event)=>{
     state.pushNotification.token = event.target.value;
-    console.log(state.pushNotification);
+    //console.log(state.pushNotification);
   }
   const getmsgBody=(event)=>{
     state.pushNotification.msgBody = event.target.value;
-    console.log(state.pushNotification);
+    //console.log(state.pushNotification);
   }
   const handleSendMessage = (event)=>{
     smsApiCall(state.sms);
@@ -101,7 +101,7 @@ export default function WorkSection() {
                 }}
               />
               <GridItem xs={12} sm={12} md={4}>
-                <Button color="primary">Send Message</Button>
+                <Button color="primary" onClick={handleSendMessage}>Send Message</Button>
               </GridItem>
             </GridContainer>
           </form>
@@ -164,7 +164,7 @@ export default function WorkSection() {
                 }}
               />
               <GridItem xs={12} sm={12} md={4}>
-                <Button color="primary">Send Notfication</Button>
+                <Button color="primary" onClick={handleSendNotification}>Send Notfication</Button>
               </GridItem>
             </GridContainer>
           </form>
