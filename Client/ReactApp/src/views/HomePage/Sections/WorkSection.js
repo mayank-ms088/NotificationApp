@@ -9,7 +9,9 @@ import GridContainer from "components/Grid/GridContainer.js";
 import GridItem from "components/Grid/GridItem.js";
 import CustomInput from "components/CustomInput/CustomInput.js";
 import Button from "components/CustomButtons/Button.js";
-
+//utils
+import {smsApiCall,pushNotificationApiCall} from "utils/apiCalls.js"
+//styles
 import styles from "assets/jss/material-kit-react/views/landingPageSections/workStyle.js";
 
 const useStyles = makeStyles(styles);
@@ -17,20 +19,46 @@ const useStyles = makeStyles(styles);
 export default function WorkSection() {
   const classes = useStyles();
   let state={
-    mobile:'',
-    smsmsg:''
-
+    sms: { 
+      mobile:"",
+      smsBody: ""
+    }
+    pushNotification{ 
+      topic:"",
+      token:"",
+      title:"",
+      msgBody:""
+    }
   }
-  const getValue = (event)=>{
-    state.mobile = (event.state.mobile.value);
-    state.smsmsg = (event.smsmsg.value);
+  const getMobileNumber=(event)=>{
+    state.sms.mobile = event.target.value;
+    console.log(state.sms);
   }
-  const handleSubmit = (event)=> {
-     event.preventDefault();//stop reloading
-     const mobile=state.mobile;
-     const smsmsg=state.smsmsg;
-     console.log('mobile:',mobile);
-     console.log('smsmsg:',smsmsg);
+  const getSmsBody=(event)=>{
+    state.sms.smsBody = event.target.value;
+    console.log(state.sms);
+  }
+  const getTopic=(event)=>{
+    state.pushNotification.topic = event.target.value;
+    console.log(state.pushNotification);
+  }
+  const getTitle=(event)=>{
+    state.pushNotification.title = event.target.value;
+    console.log(state.pushNotification);
+  }
+  const getToken=(event)=>{
+    state.pushNotification.token = event.target.value;
+    console.log(state.pushNotification);
+  }
+  const getmsgBody=(event)=>{
+    state.pushNotification.msgBody = event.target.value;
+    console.log(state.pushNotification);
+  }
+  const handleSendMessage = (event)=>{
+    smsApiCall(state.sms);
+  }
+  const handleSendNotification = (event)=>{
+    pushNotificationApiCall(state.pushNotification);
   }
   return (
     <div className={classes.section}>
@@ -52,8 +80,8 @@ export default function WorkSection() {
                     fullWidth: true
                   }}
                   inputProps={{
-                    onChange: getValue,
-                   ref: (input)=>{state.mobile = input}
+                    type: "mobile",
+                    onChange: getMobileNumber
                     
                   }}
                 />
@@ -68,12 +96,12 @@ export default function WorkSection() {
                 inputProps={{
                   multiline: true,
                   rows: 5,
-                  onChange: getValue,
-                  ref: (input)=>{state.smsmsg= input}
+                  type: "msg",
+                  onChange: getSmsBody
                 }}
               />
               <GridItem xs={12} sm={12} md={4}>
-                <Button color="primary" onClick ={handleSubmit}>Send Message</Button>
+                <Button color="primary">Send Message</Button>
               </GridItem>
             </GridContainer>
           </form>
@@ -81,7 +109,7 @@ export default function WorkSection() {
 
         <GridItem cs={12} sm={12} md={8}>
           <h4 className={classes.title}>
-            Enter Notification INFO
+            Enter Notfication INFO
           </h4>
           <form>
             <GridContainer>
@@ -92,6 +120,9 @@ export default function WorkSection() {
                   formControlProps={{
                     fullWidth: true
                   }}
+                  inputProps={{
+                    onChange: getTitle
+                  }}
                 />
               </GridItem>
               <GridItem xs={12} sm={12} md={6}>
@@ -100,6 +131,9 @@ export default function WorkSection() {
                   id="topic"
                   formControlProps={{
                     fullWidth: true
+                  }}
+                  inputProps={{
+                    onChange: getTopic
                   }}
                 />
               </GridItem>
@@ -112,7 +146,8 @@ export default function WorkSection() {
                 }}
                 inputProps={{
                   multiline: true,
-                  rows: 1
+                  rows: 1,
+                  onChange: getToken
                 }}
               />
               <CustomInput
@@ -124,7 +159,8 @@ export default function WorkSection() {
                 }}
                 inputProps={{
                   multiline: true,
-                  rows: 5
+                  rows: 5,
+                  onChange: getmsgBody
                 }}
               />
               <GridItem xs={12} sm={12} md={4}>
