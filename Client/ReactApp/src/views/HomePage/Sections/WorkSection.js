@@ -9,7 +9,9 @@ import GridContainer from "components/Grid/GridContainer.js";
 import GridItem from "components/Grid/GridItem.js";
 import CustomInput from "components/CustomInput/CustomInput.js";
 import Button from "components/CustomButtons/Button.js";
-
+//utils
+import {smsApiCall,pushNotificationApiCall} from "utils/apiCalls.js"
+//styles
 import styles from "assets/jss/material-kit-react/views/landingPageSections/workStyle.js";
 
 const useStyles = makeStyles(styles);
@@ -17,42 +19,46 @@ const useStyles = makeStyles(styles);
 export default function WorkSection() {
   const classes = useStyles();
   let state={
-    mobile:"",
-    smsBody: "",
-    topic:"",
-    token:"",
-    title:"",
-    msgBody:""
+    sms: { 
+      mobile:"",
+      smsBody: ""
+    },
+    pushNotification: { 
+      topic:"",
+      token:"",
+      title:"",
+      msgBody:""
+    }
   }
   const getMobileNumber=(event)=>{
-    state.mobile = event.target.value;
-    console.log(state);
+    state.sms.mobile = event.target.value;
+    //console.log(state.sms);
   }
   const getSmsBody=(event)=>{
-    state.smsBody = event.target.value;
-    console.log(state);
+    state.sms.smsBody = event.target.value;
+    //console.log(state.sms);
   }
   const getTopic=(event)=>{
-    state.topic = event.target.value;
-    console.log(state);
+    state.pushNotification.topic = event.target.value;
+    //console.log(state.pushNotification);
   }
   const getTitle=(event)=>{
-    state.title = event.target.value;
-    console.log(state);
+    state.pushNotification.title = event.target.value;
+    //console.log(state.pushNotification);
   }
   const getToken=(event)=>{
-    state.token = event.target.value;
-    console.log(state);
+    state.pushNotification.token = event.target.value;
+    //console.log(state.pushNotification);
   }
   const getmsgBody=(event)=>{
-    state.msgBody = event.target.value;
-    console.log(state);
+    state.pushNotification.msgBody = event.target.value;
+    //console.log(state.pushNotification);
   }
   const handleSendMessage = (event)=>{
-    smsApiCall(state);
+    smsApiCall(state.sms);
   }
   const handleSendNotification = (event)=>{
-    pushNotificationApiCall(state);
+    pushNotificationApiCall(state.pushNotification);
   }
   return (
     <div className={classes.section}>
@@ -95,7 +101,7 @@ export default function WorkSection() {
                 }}
               />
               <GridItem xs={12} sm={12} md={4}>
-                <Button color="primary">Send Message</Button>
+                <Button color="primary" onClick={handleSendMessage}>Send Message</Button>
               </GridItem>
             </GridContainer>
           </form>
@@ -158,7 +164,7 @@ export default function WorkSection() {
                 }}
               />
               <GridItem xs={12} sm={12} md={4}>
-                <Button color="primary">Send Notfication</Button>
+                <Button color="primary" onClick={handleSendNotification}>Send Notfication</Button>
               </GridItem>
             </GridContainer>
           </form>
