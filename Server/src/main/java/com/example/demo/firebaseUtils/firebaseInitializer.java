@@ -9,7 +9,7 @@ import javax.annotation.PostConstruct;
 import java.io.IOException;
 @Service
 public class firebaseInitializer {
-    private final String firebaseConfigPath = "googleConfigFile/notificationapplication-c30aacf05191.json";
+    private final String firebaseConfigPath = "googleConfigFile/notificationapp-9047d-firebase-adminsdk-4v5ab-71002bf258.json";
 
 
     @PostConstruct
