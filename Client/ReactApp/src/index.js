@@ -7,14 +7,65 @@ import "assets/scss/material-kit-react.scss?v=1.9.0";
 
 // pages for this product
 import home from "views/HomePage/home.js";
-import {initFirebase} from "utils/initializeFirebaseApp.js";
+import {messaging} from "utils/init-fcm.js";
+import {setToken} from "utils/apiCalls.js";
 var hist = createBrowserHistory();
-initFirebase();
+if ("serviceWorker" in navigator) {
+  navigator.serviceWorker
+    .register("./firebase-messaging-sw.js")
+    .then(function(registration) {
+      console.log("Registration successful, scope is:", registration.scope);
+    })
+    .catch(function(err) {
+      console.log("Service worker registration failed, error:", err);
+    });
+}
+function componentDidMount(){
+	messaging.onMessage(function (payload) {
+        console.log(payload);
+        const notificationOption={
+            body:payload.notification.body,
+            icon:payload.notification.icon
+        };
+
+        if(Notification.permission==="granted"){
+            var notification=new Notification(payload.notification.title,notificationOption);
+
+            notification.onclick=function (ev) {
+                ev.preventDefault();
+                window.open(payload.notification.click_action,'_blank');
+                notification.close();
+            }
+        }
+
+    });
+    messaging.onTokenRefresh(function () {
+        messaging.getToken()
+            .then(function (newtoken) {
+                console.log("New Token : "+ newtoken);
+            })
+            .catch(function (reason) {
+                console.log(reason);
+            })
+})
+messaging.requestPermission()
+            .then(()=>{
+                console.log("Notification Permission");
+                return messaging.getToken();
+            })
+            .then((token) =>{
+                setToken(token);
+            })
+            .catch((reason)=> {
+                console.log(reason);
+            });
+navigator.serviceWorker.addEventListener("message", (message) => console.log(message));
+}
+componentDidMount();
 ReactDOM.render(
   <Router history={hist}>
     <Switch>
      	<Route path="/" component={home} />
-      
     </Switch>
   </Router>,
   document.getElementById("root")
