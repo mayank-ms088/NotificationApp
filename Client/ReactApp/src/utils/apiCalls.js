@@ -1,11 +1,11 @@
-import React from "react";
 import axios from 'axios';
-
-
-
-
+import baseUrl from "utils/baseUrl.js";
+var Token;
+export function setToken(token){
+  Token = token;
+}
 export function smsApiCall(sms){
-	axios.post('http://localhost:5000/push_notification',sms)
+	axios.post(baseUrl + '/push_notification',sms)
     .then(response =>{
       console.log(response)
     })
@@ -15,7 +15,8 @@ export function smsApiCall(sms){
 	
 };
 export function pushNotificationApiCall(pushNotification){
-	axios.post('http://localhost:5000/push_notification',pushNotification)
+  pushNotification.token = Token;
+	axios.post(baseUrl + '/push_notification',pushNotification)
     .then(response =>{
       console.log(response)
     })

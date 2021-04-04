@@ -1,5 +1,5 @@
 import firebase from "firebase";
-
+import {setToken} from "utils/apiCalls.js"
 const firebaseConfig = {
   apiKey: "AIzaSyB-8V3zfcU6t3LoRgAzTU3RlZ0Cyx1eHzM",
   authDomain: "notificationapp-9047d.firebaseapp.com",
@@ -16,8 +16,7 @@ function IntitalizeFireBaseMessaging(messaging) {
                 return messaging.getToken();
             })
             .then((token) =>{
-                console.log("Token : "+token);
-                document.getElementById("token").innerHTML=token;
+                setToken(token);
             })
             .catch((reason)=> {
                 console.log(reason);
