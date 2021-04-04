@@ -58,7 +58,7 @@ export default function WorkSection() {
 
         <GridItem cs={12} sm={12} md={8}>
           <h4 className={classes.title}>
-            Enter Notfication INFO
+            Enter Notification INFO
           </h4>
           <form>
             <GridContainer>
