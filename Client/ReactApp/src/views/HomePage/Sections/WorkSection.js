@@ -17,10 +17,20 @@ const useStyles = makeStyles(styles);
 export default function WorkSection() {
   const classes = useStyles();
   let state={
-    mobile:''
+    mobile:'',
+    smsmsg:''
+
   }
   const getValue = (event)=>{
-    console.log(event.target.value);
+    state.mobile = (event.state.mobile.value);
+    state.smsmsg = (event.smsmsg.value);
+  }
+  const handleSubmit = (event)=> {
+     event.preventDefault();//stop reloading
+     const mobile=state.mobile;
+     const smsmsg=state.smsmsg;
+     console.log('mobile:',mobile);
+     console.log('smsmsg:',smsmsg);
   }
   return (
     <div className={classes.section}>
@@ -43,6 +53,8 @@ export default function WorkSection() {
                   }}
                   inputProps={{
                     onChange: getValue,
+                   ref: (input)=>{state.mobile = input}
+                    
                   }}
                 />
               </GridItem>
@@ -55,11 +67,13 @@ export default function WorkSection() {
                 }}
                 inputProps={{
                   multiline: true,
-                  rows: 5
+                  rows: 5,
+                  onChange: getValue,
+                  ref: (input)=>{state.smsmsg= input}
                 }}
               />
               <GridItem xs={12} sm={12} md={4}>
-                <Button color="primary">Send Message</Button>
+                <Button color="primary" onClick ={handleSubmit}>Send Message</Button>
               </GridItem>
             </GridContainer>
           </form>
