@@ -27,7 +27,7 @@ export default function Components(props) {
   return (
     <div>
       <Header
-        brand="Notifications Application"
+        brand="Notification Application"
         fixed
         color="transparent"
         changeColorOnScroll={{
@@ -43,7 +43,7 @@ export default function Components(props) {
               <div className={classes.brand}>
                 <h1 className={classes.title}>Notification Application</h1>
                 <h3 className={classes.subtitle}>
-                  A Web App to send the Push Notifications and SMS
+                  A Simple Web App to send Push Notifications and SMS.
                 </h3>
               </div>
             </GridItem>

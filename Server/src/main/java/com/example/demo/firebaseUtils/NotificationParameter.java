@@ -6,7 +6,7 @@ public enum NotificationParameter {
     private static String url;
 
     static {
-        url = "localhost:3000/notificationApplication";
+        url = "localhost:5000/notificationApplication";
     }
 
     public static String getUrl() {
