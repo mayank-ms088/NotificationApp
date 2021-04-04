@@ -22,7 +22,7 @@ export default function WorkSection() {
     sms: { 
       mobile:"",
       smsBody: ""
-    }
+    }:
     pushNotification{ 
       topic:"",
       token:"",
