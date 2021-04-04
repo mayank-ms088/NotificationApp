@@ -10,7 +10,7 @@ import GridItem from "components/Grid/GridItem.js";
 import CustomInput from "components/CustomInput/CustomInput.js";
 import Button from "components/CustomButtons/Button.js";
 //utils
-import {smsApiCall,pushNotificationApiCall} from "utils/apiCalls.js"
+import {smsApiCall,pushNotificationApiCall} from "utils/apiCalls.js";
 //styles
 import styles from "assets/jss/material-kit-react/views/landingPageSections/workStyle.js";
 
@@ -55,9 +55,11 @@ export default function WorkSection() {
     //console.log(state.pushNotification);
   }
   const handleSendMessage = (event)=>{
+    event.preventDefault();
     smsApiCall(state.sms);
   }
   const handleSendNotification = (event)=>{
+    event.preventDefault();
     pushNotificationApiCall(state.pushNotification);
   }
   return (
