@@ -48,7 +48,12 @@ export default function WorkSection() {
     state.msgBody = event.target.value;
     console.log(state);
   }
-  
+  const handleSendMessage = (event)=>{
+    smsApiCall(state);
+  }
+  const handleSendNotification = (event)=>{
+    pushNotificationApiCall(state);
+  }
   return (
     <div className={classes.section}>
       <GridContainer justify="center">
