@@ -20,7 +20,7 @@ if ("serviceWorker" in navigator) {
       console.log("Service worker registration failed, error:", err);
     });
 }
-function componentDidMount(){
+
 	messaging.onMessage(function (payload) {
         console.log(payload);
         const notificationOption={
@@ -39,15 +39,6 @@ function componentDidMount(){
         }
 
     });
-    messaging.onTokenRefresh(function () {
-        messaging.getToken()
-            .then(function (newtoken) {
-                console.log("New Token : "+ newtoken);
-            })
-            .catch(function (reason) {
-                console.log(reason);
-            })
-})
 messaging.requestPermission()
             .then(()=>{
                 console.log("Notification Permission");
@@ -60,8 +51,7 @@ messaging.requestPermission()
                 console.log(reason);
             });
 navigator.serviceWorker.addEventListener("message", (message) => console.log(message));
-}
-componentDidMount();
+
 ReactDOM.render(
   <Router history={hist}>
     <Switch>
