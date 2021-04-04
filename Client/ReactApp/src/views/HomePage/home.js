@@ -15,7 +15,7 @@ import Button from "components/CustomButtons/Button.js";
 import Parallax from "components/Parallax/Parallax.js";
 // sections for this page
 import HeaderLinks from "components/Header/HeaderLinks.js";
-import SectionBasics from "./Sections/SectionBasics.js";
+import WorkSection from "./Sections/WorkSection.js";
 
 import styles from "assets/jss/material-kit-react/views/components.js";
 
@@ -52,13 +52,7 @@ export default function Components(props) {
       </Parallax>
 
       <div className={classNames(classes.main, classes.mainRaised)}>
-        <SectionBasics />
-        <GridItem md={12} className={classes.textCenter}>
-          <Link to={"/events"} className={classes.link}>
-           <Button color="primary">Submit</Button>
-          </Link>
-        </GridItem>
-        
+        <WorkSection />
       </div>
       <Footer />
     </div>
