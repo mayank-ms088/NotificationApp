@@ -55,9 +55,11 @@ export default function WorkSection() {
     //console.log(state.pushNotification);
   }
   const handleSendMessage = (event)=>{
+    event.preventDefault();
     smsApiCall(state.sms);
   }
   const handleSendNotification = (event)=>{
+    event.preventDefault();
     pushNotificationApiCall(state.pushNotification);
   }
   return (
