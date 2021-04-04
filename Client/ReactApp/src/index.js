@@ -13,7 +13,6 @@ var hist = createBrowserHistory();
 ReactDOM.render(
   <Router history={hist}>
     <Switch>
-    	<Route path="/events" component={events} />
      	<Route path="/" component={home} />
       
     </Switch>
