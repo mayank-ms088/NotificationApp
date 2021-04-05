@@ -5,7 +5,7 @@ export function setToken(token){
   Token = token;
 }
 export function smsApiCall(sms){
-	axios.post(baseUrl + '/push_notification',sms)
+	axios.post(baseUrl + '/SMS',sms)
     .then(response =>{
       console.log(response)
     })
@@ -18,7 +18,7 @@ export function pushNotificationApiCall(pushNotification){
   pushNotification.token = Token;
 	axios.post(baseUrl + '/push_notification',pushNotification)
     .then(response =>{
-      console.log(response)
+      console.log(pushNotification)
     })
     .catch(error =>{
       console.log(error)

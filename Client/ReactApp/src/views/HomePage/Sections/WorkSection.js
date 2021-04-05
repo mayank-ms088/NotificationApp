@@ -24,10 +24,10 @@ export default function WorkSection() {
       smsBody: ""
     },
     pushNotification: { 
-      topic:"",
-      token:"",
       title:"",
-      msgBody:""
+      message:"",
+      topic:"",
+      token:""
     }
   }
   const getMobileNumber=(event)=>{
@@ -38,20 +38,12 @@ export default function WorkSection() {
     state.sms.smsBody = event.target.value;
     //console.log(state.sms);
   }
-  const getTopic=(event)=>{
-    state.pushNotification.topic = event.target.value;
-    //console.log(state.pushNotification);
-  }
   const getTitle=(event)=>{
     state.pushNotification.title = event.target.value;
     //console.log(state.pushNotification);
   }
-  const getToken=(event)=>{
-    state.pushNotification.token = event.target.value;
-    //console.log(state.pushNotification);
-  }
   const getmsgBody=(event)=>{
-    state.pushNotification.msgBody = event.target.value;
+    state.pushNotification.message = event.target.value;
     //console.log(state.pushNotification);
   }
   const handleSendMessage = (event)=>{
@@ -127,31 +119,6 @@ export default function WorkSection() {
                   }}
                 />
               </GridItem>
-              <GridItem xs={12} sm={12} md={6}>
-                <CustomInput
-                  labelText="Enter Topic"
-                  id="topic"
-                  formControlProps={{
-                    fullWidth: true
-                  }}
-                  inputProps={{
-                    onChange: getTopic
-                  }}
-                />
-              </GridItem>
-              <CustomInput
-                labelText="Enter Token"
-                id="message"
-                formControlProps={{
-                  fullWidth: true,
-                  className: classes.textArea
-                }}
-                inputProps={{
-                  multiline: true,
-                  rows: 1,
-                  onChange: getToken
-                }}
-              />
               <CustomInput
                 labelText="Your Message"
                 id="message"
