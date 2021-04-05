@@ -38,16 +38,8 @@ export default function WorkSection() {
     state.sms.smsBody = event.target.value;
     //console.log(state.sms);
   }
-  const getTopic=(event)=>{
-    state.pushNotification.topic = event.target.value;
-    //console.log(state.pushNotification);
-  }
   const getTitle=(event)=>{
     state.pushNotification.title = event.target.value;
-    //console.log(state.pushNotification);
-  }
-  const getToken=(event)=>{
-    state.pushNotification.token = event.target.value;
     //console.log(state.pushNotification);
   }
   const getmsgBody=(event)=>{
@@ -124,18 +116,6 @@ export default function WorkSection() {
                   }}
                   inputProps={{
                     onChange: getTitle
-                  }}
-                />
-              </GridItem>
-              <GridItem xs={12} sm={12} md={6}>
-                <CustomInput
-                  labelText="Enter Topic"
-                  id="topic"
-                  formControlProps={{
-                    fullWidth: true
-                  }}
-                  inputProps={{
-                    onChange: getTopic
                   }}
                 />
               </GridItem>

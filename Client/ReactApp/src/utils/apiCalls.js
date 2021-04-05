@@ -5,7 +5,7 @@ export function setToken(token){
   Token = token;
 }
 export function smsApiCall(sms){
-	axios.post(baseUrl + '/push_notification',sms)
+	axios.post(baseUrl + '/SMS',sms)
     .then(response =>{
       console.log(response)
     })
