@@ -18,7 +18,7 @@ export function pushNotificationApiCall(pushNotification){
   pushNotification.token = Token;
 	axios.post(baseUrl + '/push_notification',pushNotification)
     .then(response =>{
-      console.log(response)
+      console.log(pushNotification)
     })
     .catch(error =>{
       console.log(error)

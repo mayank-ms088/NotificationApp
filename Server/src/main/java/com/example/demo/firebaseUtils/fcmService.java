@@ -23,16 +23,17 @@ public class fcmService {
     }
 
     private static Message.Builder getPreconfiguredMessageBuilder(PushNotificationRequest request) {
-        WebpushConfig webConfig = getWebConfig(request.getTopic());
+        WebpushConfig webConfig = getWebConfig(request.getTitle(),request.getMessage());
         return Message.builder().setWebpushConfig(webConfig).setNotification(Notification.builder().setTitle(request.getTitle()).setBody(request.getMessage()).build());
     }
 
-    private static WebpushConfig getWebConfig(String topic) {
+    private static WebpushConfig getWebConfig(String title, String messageBody) {
         return WebpushConfig.builder()
                 .setNotification(WebpushNotification.builder()
                         .setBadge(NotificationParameter.getUrl())
-                        .setDirection(WebpushNotification.Direction.RIGHT_TO_LEFT)
-                        .setTitle(topic).build()).build();
+                        .setTitle(title)
+                        .setBody(messageBody)
+                        .build()).build();
     }
 
 
