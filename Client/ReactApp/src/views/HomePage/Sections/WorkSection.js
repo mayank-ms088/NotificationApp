@@ -49,13 +49,13 @@ export default function WorkSection() {
   const handleSendMessage = (event)=>{
     event.preventDefault();
     smsApiCall(state.sms);
-    alert("SMS Sent!!");
+    //alert("SMS Sent!!");
     window.location.reload();
   }
   const handleSendNotification = (event)=>{
     event.preventDefault();
     pushNotificationApiCall(state.pushNotification);
-    alert("You Must have received Push Notification");
+    //alert("You Must have received Push Notification");
     window.location.reload();
   }
   return (
