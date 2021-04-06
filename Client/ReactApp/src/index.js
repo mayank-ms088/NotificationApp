@@ -7,10 +7,13 @@ import "assets/scss/material-kit-react.scss?v=1.9.0";
 
 // pages for this product
 import home from "views/HomePage/home.js";
-import {messaging} from "utils/init-fcm.js";
+import {initializeFcmMessaging} from "utils/init-fcm.js";
 import {setToken} from "utils/apiCalls.js";
+import {initialize, setupPushNotification, setUser} from "raven/index.js"
 var hist = createBrowserHistory();
-if ("serviceWorker" in navigator) {
+function intialiseFCM(){
+    const messaging = initializeFcmMessaging();
+    if ("serviceWorker" in navigator) {
   navigator.serviceWorker
     .register("./firebase-messaging-sw.js")
     .then(function(registration) {
@@ -21,7 +24,7 @@ if ("serviceWorker" in navigator) {
     });
 }
 
-	messaging.onMessage(function (payload) {
+    messaging.onMessage(function (payload) {
         console.log(payload);
         const notificationOption={
             body:payload.notification.body,
@@ -51,7 +54,14 @@ messaging.requestPermission()
                 console.log(reason);
             });
 navigator.serviceWorker.addEventListener("message", (message) => console.log(message));
-
+}
+function intialiseRaven(){
+    initialize();
+    setUser('MayankSharma','9027350941', 'SharmaMontooboss@gmail.com');
+    setupPushNotification();
+}
+//intialiseFCM()
+intialiseRaven()
 ReactDOM.render(
   <Router history={hist}>
     <Switch>
