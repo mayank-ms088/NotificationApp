@@ -117,9 +117,9 @@ export function setUserDevice(userId, token) {
             console.error('Error:', error);
         });
 }
-export function sendMessage(userId, email, mobile, notification){
+export function sendMessage(userId, email, mobile,token){
     //console.log(userId);
-    if (!userId || !email || !mobile || !notification) {
+    if (!userId || !email || !mobile || !token) {
         return
     }
     // send message api
@@ -135,8 +135,10 @@ export function sendMessage(userId, email, mobile, notification){
                     "mobile" : '+91'+mobile,
                     "email" : email,
                     "whatsapp_mobile" : "", // if empty, `mobile` is considered for whatsapp
+                    "devices" : [{
+                        "fcm_token": token
+                    }]
                 },
-                "notification": notification,
                 "data" : {
                     "name" : "Mayank Sharma",
                     "date" : "Apr 6"

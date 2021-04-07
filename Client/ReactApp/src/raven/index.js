@@ -90,7 +90,6 @@ function onTokenReceived(token) {
 
     //check if token already exists
     var localToken = localStorage.getItem(DEVICE_TOKEN)
-    console.log(localToken);
     if (token === localToken) {
         return
     }

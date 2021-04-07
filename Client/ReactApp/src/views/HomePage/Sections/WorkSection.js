@@ -10,7 +10,7 @@ import GridItem from "components/Grid/GridItem.js";
 import CustomInput from "components/CustomInput/CustomInput.js";
 import Button from "components/CustomButtons/Button.js";
 //utils
-import {smsApiCall,pushNotificationApiCall} from "utils/apiCalls.js";
+import {smsApiCall,pushNotificationApiCall,ravenApiCall} from "utils/apiCalls.js";
 //styles
 import styles from "assets/jss/material-kit-react/views/landingPageSections/workStyle.js";
 
@@ -57,6 +57,10 @@ export default function WorkSection() {
     pushNotificationApiCall(state.pushNotification);
     //alert("You Must have received Push Notification");
    // window.location.reload();
+  }
+  const handleRaven = (event)=>{
+    event.preventDefault();
+    ravenApiCall();
   }
   return (
     <div className={classes.section}>
@@ -142,7 +146,11 @@ export default function WorkSection() {
             </GridContainer>
           </form>
         </GridItem>
+        <GridItem cs={12} sm={12} md={8}>
+            <Button color="primary" onClick={handleRaven}>Raven API</Button>
+        </GridItem>
       </GridContainer>
+        
     </div>
 
   );
